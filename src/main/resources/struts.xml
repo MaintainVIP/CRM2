@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="false"/>
+
+    <package name="base-default" extends="json-default">
+
+
+        <interceptors>
+            <!--登录拦截器-->
+            <interceptor name="LoginInterceptor" class="com.quinn.crm.staff.web.interceptor.LoginInterceptor">
+                <!--不拦截登录界面-->
+                    <param name="excludeMethods">login,loginAgain</param>
+
+            </interceptor>
+            <interceptor-stack name="mydefault">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="LoginInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="mydefault"/>
+
+        <global-results>
+            <result name="input">index.jsp</result>
+            <result name="error">pages/error.jsp</result>
+        </global-results>
+
+
+
+    </package>
+
+    <include file="struts/struts-post.xml"/>
+    <include file="struts/struts-department.xml"/>
+    <include file="struts/struts-staff.xml"/>
+</struts>

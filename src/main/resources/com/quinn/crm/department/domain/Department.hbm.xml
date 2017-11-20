@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.quinn.crm.department.domain">
+<!--初步估计,这是用来建表的-->
+    <class name="Department" table="Department">
+        <id name="deptId" length="32">
+            <generator class="uuid"/>
+        </id>
+        <property name="deptName" length="100"/>
+
+        <set name="posts"
+             table="Post"
+             lazy="false"
+             inverse="true">
+            <key column="deptId"/>
+            <one-to-many class="com.quinn.crm.post.domain.Post"/>
+        </set>
+    </class>
+
+</hibernate-mapping>

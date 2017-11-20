@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="staff" extends="base-default">
+        <default-class-ref class="staffAction"/>
+
+        <action name="listStaff" method="listStaff">
+            <result name="success">/pages/staff/listStaff.jsp</result>
+        </action>
+
+        <action name="login" method="login">
+            <result name="login">/pages/frame.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+        </action>
+
+        <action name="editStaff" method="editStaff">
+            <result name="success">/pages/staff/editStaff.jsp</result>
+        </action>
+        <action name="editStaffs" method="editStaffs">
+            <result name="success" type="redirectAction">listStaff</result>
+        </action>
+        <action name="addStaff" method="addStaff">
+            <result name="success">/pages/staff/addStaff.jsp</result>
+        </action>   
+        <action name="addStaffs" method="addStaffs">
+            <result name="success" type="redirectAction">listStaff</result>
+        </action>
+        <action name="findStaffs" method="findStaffs">
+            <result name="success">/pages/staff/listStaff.jsp</result>
+        </action>
+        <!--重新登录-->
+        <action name="loginAgain" method="loginAgain">
+            <result name="success">/pages/login.jsp</result>
+        </action>
+        <!--修改密码-->
+        <action name="editPassword" method="editPassword">
+            <result name="success">/pages/staff/updPwd.jsp</result>
+        </action>
+        <!--真·修改密码-->
+        <action name="editLoginPassword" method="editLoginPassword">
+            <result name="input">/pages/staff/updPwd.jsp</result>
+            <result name="">/pages/staff/updPwd.jsp</result>
+            <result name="success">/pages/login.jsp</result>
+        </action>
+
+    </package>
+
+</struts>
